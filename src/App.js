@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+
+import ToDoList from "./components/ToDoList";
 
 function App() {
+  const [items, setItems] = useState([
+    { id: 1, value: "Task 1" },
+    { id: 2, value: "Task 2" },
+    { id: 3, value: "Task 3" },
+  ]);
+
+  function handelDelete(id) {
+    setItems((prevValue) => prevValue.filter((item) => item.id !== id ))
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App-header">
+      <ToDoList items={items} onRemove={handelDelete}/>
     </div>
   );
 }
