@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 
+import styles from "./ToDo.module.css"
+
 const ToDoList = ({ items, onRemove }) => {
   useEffect(() => {
     console.log("Эффект запущен. Количество задач:", items.length); //срабатывает каждый раз когда что то меняется в items
@@ -7,11 +9,11 @@ const ToDoList = ({ items, onRemove }) => {
     return() => console.log('cleanup effect') //срабатывает перед useEffect
   }, [items]);
   return (
-    <ul>
+    <ul className={styles.container}>
       {items.map((i) => (
         <li key={i.id}>
           {i.value}
-          <button onClick={() => onRemove(i.id)}>Удалить</button>
+          <button className={styles.btnTask} onClick={() => onRemove(i.id)}>Удалить</button>
         </li>
       ))}
     </ul>
