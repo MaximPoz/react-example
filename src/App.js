@@ -1,23 +1,39 @@
 import React, { useState } from "react";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+
 import "./App.css";
 
-import ToDoList from "./components/ToDoList";
+import Register from "./screens/Register";
+import Home from "./screens/Home";
+import Login from "./screens/Login";
+import ShopCard from "./components/ShopCard/ShopCard";
 
 function App() {
-  const [items, setItems] = useState([
-    { id: 1, value: "Task 1" },
-    { id: 2, value: "Task 2" },
-    { id: 3, value: "Task 3" },
-  ]);
-
-  function handelDelete(id) {
-    setItems((prevValue) => prevValue.filter((item) => item.id !== id ))
-  }
-
   return (
-    <div className="App-header">
-      <ToDoList items={items} onRemove={handelDelete}/>
-    </div>
+    <BrowserRouter>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Главная</Link>
+          </li>
+          <li>
+            <Link to="Login">Авторизация</Link>
+          </li>
+          <li>
+            <Link to="register">Реристрация</Link>
+          </li>
+          <li>
+            <Link to="card">Карточка товара</Link>
+          </li>
+        </ul>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/card" element={<ShopCard />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
