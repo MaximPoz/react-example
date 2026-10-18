@@ -19,11 +19,10 @@
   display: block;
 }
 
-
 .cont{
   width: 400px;
   display: grid;
-  /* grid-template-rows: 2fr 2fr; */
+  grid-template-rows: auto auto;
   grid-template-columns: 200px 200px ;
   border: 1px solid #333;
 }
