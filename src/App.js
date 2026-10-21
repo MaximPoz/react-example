@@ -6,43 +6,49 @@ import "./App.css";
 import Register from "./screens/Register";
 import Home from "./screens/Home";
 import Login from "./screens/Login";
-import ShopCard from "./components/ShopCard/ShopCard";
+import ShopCards from "./screens/ShopCards/ShopCards";
 
-const item = {
-  brand: 'Tiger of Sweden',
-  title: 'Leonard coat',
-  description: 'Minimalistic coat in cotton-blend',
-  descriptionFull: 'Men\\\'s minimalistic overcoat in cotton-blend. Features a stand-up collar, concealed front closure and single back vent. Slim fit with clean, straight shape. Above-knee length.',
-  price: 399,
-  currency: '£'
-}
+
 
 function App() {
   return (
-    <BrowserRouter>
-      <nav>
+    <div className="app-wrapper">
+      <nav >
         <ul>
           <li>
             <Link to="/">Главная</Link>
           </li>
           <li>
-            <Link to="Login">Авторизация</Link>
+            <Link to="card">Каталог товаров</Link>
+
           </li>
           <li>
             <Link to="register">Реристрация</Link>
           </li>
           <li>
-            <Link to="card">Карточка товара</Link>
+            <Link to="Login">Авторизация</Link>
           </li>
         </ul>
       </nav>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/card" element={<ShopCard item={item}/>} />
-      </Routes>
-    </BrowserRouter>
+      <main className="main-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/card" element={<ShopCards />} />
+        </Routes>
+      </main>
+      <footer className="footer">
+        <div className="footer-content">
+          <p>&copy; 2026 Мой магазин. Все права защищены.</p>
+          <div className="footer-links">
+            <a href="#about">О нас</a>
+            <a href="#contacts">Контакты</a>
+            <a href="#privacy">Политика конфиденциальности</a>
+          </div>
+        </div>
+      </footer>
+    </div >
   );
 }
 

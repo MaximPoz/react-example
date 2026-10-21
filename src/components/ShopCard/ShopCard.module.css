@@ -1,46 +1,57 @@
+/* ===== Контейнер ===== */
 .container {
-  margin: 30px;
+  margin: 30px auto;
   display: grid;
-  grid-template-rows: 0.6fr 6fr;
-  grid-template-columns: 5fr 2fr;
+  grid-template-rows: auto 1fr;      /* header + body */
+  grid-template-columns: 1fr;        /* ОДНА колонка — второй не нужно */
   border: 1px solid #ddd;
   border-radius: 8px;
   overflow: hidden;
-  max-width: 700px;
+  max-width: 500px;
+  max-height: 400px;
+  width: 100%;                       /* сжимается от родителя */
+  background: #fff;
 }
 
+/* ===== Шапка ===== */
 .header {
   display: flex;
   justify-content: space-between;
-  grid-column: 1 / -1;
+  align-items: center;
   padding: 12px;
   font-weight: bold;
   background-color: #f5f5f5;
-  text-align: left;
-  max-height: 30px;
-  align-items: center;
+  min-height: 20px;
 }
 
 .btnBack {
   border: none;
   border-radius: 3px;
-  background-color: #f5f5f5;
+  background-color: transparent;
   cursor: pointer;
   padding: 5px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.btnBack:hover {
+  background-color: #e8e8e8;
 }
 
 .btnBack:active {
-  background-color: white;
+  background-color: #fff;
 }
 
 .wishlistIcon {
   background: none;
   border: none;
-  margin: 0px;
-  padding: none;
-  background-color: #f5f5f5;
+  padding: 0 6px;
   font-size: 28px;
+  line-height: 1;
   cursor: pointer;
+  color: #333;
+  transition: color 0.15s ease;
 }
 
 .wishlistIcon:hover {
@@ -51,61 +62,114 @@
   color: red;
 }
 
+/* ===== Тело карточки ===== */
 .cardBody {
   display: grid;
-  grid-template-columns: 250px 450px;
+  grid-template-columns: minmax(100px, 150px) 1fr;  /* картинка сжимается, текст — остаток */
+  min-width: 0;
 }
 
+.cardBody > * {
+  min-width: 0;    /* разрешает сжатие grid-элементов */
+}
+
+/* ===== Картинка ===== */
 .img {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 16px;
+  min-width: 0;
 }
 
 .logo {
-  width: 100%;
+  width: 130%;
   height: auto;
   max-height: 300px;
+  object-fit: contain;
+  display: block;
 }
 
+/* ===== Текстовая часть ===== */
 .card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 8px;
   border-left: 1px solid #ddd;
-  padding: 30px;
+  padding: 24px 30px;
+  min-width: 0;             /* важно для сжатия */
 }
 
 .cardH2 {
-  margin: 0px;
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.2;
+  /* при желании — перенос длинных слов: */
+  overflow-wrap: anywhere;
 }
 
 .title {
-  margin-top: 0px;
+  margin: 0;
+  color: #555;
 }
 
 .price {
-  font-size: 22px;
-  margin: 0px;
+  font-size: 18px;
+  margin: 0;
+  font-weight: 600;
 }
 
+.description {
+  margin: 0;
+  color: #666;
+  line-height: 1.5;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+/* ===== Кнопки ===== */
 .btnCards {
   display: flex;
   justify-content: center;
   gap: 10px;
-  cursor: pointer;
+  margin-top: 8px;
+  flex-wrap: wrap;         /* на узком экране кнопки переносятся */
 }
 
 .btnCard {
-  width: 120px;
-  height: 40px;
-  background-color: white;
+  flex: 1 1 120px;         /* вместо width: 120px — гибкая ширина */
+  min-width: 0;
+  height: 30px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.15s ease;
+}
+
+.btnCard:hover {
+  background-color: #f0f0f0;
 }
 
 .btnCard:active {
   background-color: #9fb69f;
 }
 
-.description {
-  margin-top: 0px;
+/* ===== Адаптив ===== */
+@media (max-width: 560px) {
+  .cardBody {
+    grid-template-columns: 1fr;   /* картинка сверху, текст снизу */
+  }
+
+  .card {
+    border-left: none;
+    border-top: 1px solid #ddd;
+    padding: 20px;
+  }
+
+  .logo {
+    max-height: 220px;
+  }
 }

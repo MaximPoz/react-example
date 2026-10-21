@@ -1,38 +1,81 @@
-.App {
-  text-align: center;
+/* Делаем body flex-контейнером */
+body {
+  margin: 0;
+  min-height: 100vh; /* минимум на всю высоту экрана */
+  display: flex;
+  flex-direction: column; /* элементы располагаются вертикально */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Основной контент растягивается, занимая всё свободное место */
+#root {
+  flex: 1; /* или flex-grow: 1 */
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.nameScreen{
+  margin-left: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+nav ul {
+  list-style: none; /* убираем маркеры */
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 20px;
+  background-color: #f5f5f5;
+  padding: 15px 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+nav a:hover {
+  color: #007bff;
+}
+
+
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1; /* растягивается, толкая футер вниз */
+}
+
+/* Стили для футера */
+.footer {
+  background-color: #333; /* тёмный фон */
+  color: #fff; /* белый текст */
+  padding: 20px 0; /* отступы сверху и снизу */
+  margin-top: 40px; /* отступ от основного контента */
+}
+
+.footer-content {
+  max-width: 1200px; /* ограничиваем ширину контента */
+  margin: 0 auto; /* центрируем по горизонтали */
+  display: flex; /* используем flexbox для расположения элементов */
+  justify-content: space-between; /* копирафт слева, ссылки справа */
+  align-items: center; /* выравниваем по вертикали */
+  padding: 0 20px; /* отступы по бокам */
+}
+
+.footer-links {
+  display: flex; /* ссылки в одну строку */
+  gap: 20px; /* отступы между ссылками */
+}
+
+.footer-links a {
+  color: #fff; /* белый цвет ссылок */
+  text-decoration: none; /* убираем подчёркивание */
+  transition: color 0.3s; /* плавное изменение цвета */
+}
+
+.footer-links a:hover {
+  color: #007bff; /* синий цвет при наведении */
 }
