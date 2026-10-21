@@ -8,6 +8,15 @@ import Home from "./screens/Home";
 import Login from "./screens/Login";
 import ShopCard from "./components/ShopCard/ShopCard";
 
+const item = {
+  brand: 'Tiger of Sweden',
+  title: 'Leonard coat',
+  description: 'Minimalistic coat in cotton-blend',
+  descriptionFull: 'Men\\\'s minimalistic overcoat in cotton-blend. Features a stand-up collar, concealed front closure and single back vent. Slim fit with clean, straight shape. Above-knee length.',
+  price: 399,
+  currency: '£'
+}
+
 function App() {
   return (
     <BrowserRouter>
@@ -31,7 +40,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/card" element={<ShopCard />} />
+        <Route path="/card" element={<ShopCard item={item}/>} />
       </Routes>
     </BrowserRouter>
   );
